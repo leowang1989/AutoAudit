@@ -27,19 +27,21 @@ public class QueryStatementAuditListener  extends SqlAuditBaseListener {
         ctx.result = false;
 
         if (ctx.function().CONDITIONIS() != null) {
-            // 获取参数列表
-            List<SqlAuditParser.FuncParamContext> params = ctx.funcParamList().params;
-            if (params != null && params.size() == 2) {
-                String identifier = params.get(0).getText();
-                String operator = params.get(1).getText();
+            if (queryStatementDesc.isExistFilter()) {
+                // 获取参数列表
+                List<SqlAuditParser.FuncParamContext> params = ctx.funcParamList().params;
+                if (params != null && params.size() == 2) {
+                    String identifier = params.get(0).getText();
+                    String operator = params.get(1).getText();
 
-                // 获取查询条件列表
-                List<QueryConditionDesc> conds = queryStatementDesc.getConds();
-                for (QueryConditionDesc cond : conds) {
-                    if (identifier.compareTo(cond.getLeftVal()) == 0 &&
-                    operator.compareTo(cond.getOperator()) == 0) {
-                        ctx.result = true;
-                        break;
+                    // 获取查询条件列表
+                    List<QueryConditionDesc> conds = queryStatementDesc.getConds();
+                    for (QueryConditionDesc cond : conds) {
+                        if (identifier.compareTo(cond.getLeftVal()) == 0 &&
+                                operator.compareTo(cond.getOperator()) == 0) {
+                            ctx.result = true;
+                            break;
+                        }
                     }
                 }
             }
