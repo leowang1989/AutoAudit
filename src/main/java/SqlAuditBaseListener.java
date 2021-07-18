@@ -106,6 +106,18 @@ public class SqlAuditBaseListener implements SqlAuditListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPredicate(SqlAuditParser.PredicateContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCompOperator(SqlAuditParser.CompOperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCompOperator(SqlAuditParser.CompOperatorContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

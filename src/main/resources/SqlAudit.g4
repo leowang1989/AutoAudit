@@ -19,14 +19,18 @@ function
 funcParamList: params+=funcParam (',' params+=funcParam)* ;
 
 funcParam
-	: predicate
+	: compOperator
+	| predicate
 	| ID
 	;
 
 predicate
 	: BETWEEN
 	| IN
-	| EQ
+	;
+
+compOperator	
+	: EQ
 	| NSEQ
 	| NEQ
 	| NEQJ

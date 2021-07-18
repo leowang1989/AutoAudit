@@ -92,4 +92,14 @@ public interface SqlAuditListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPredicate(SqlAuditParser.PredicateContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SqlAuditParser#compOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterCompOperator(SqlAuditParser.CompOperatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SqlAuditParser#compOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitCompOperator(SqlAuditParser.CompOperatorContext ctx);
 }
